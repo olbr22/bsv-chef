@@ -25,3 +25,42 @@ class TestRecipeControllerGetRecipe:
         
         result = sut.get_recipe('normal', True)
         assert result == {'name': 'test', 'diet': 'normal', 'ingredients': ['test']}
+
+    @pytest.mark.unit
+    def test_get_recipe_2(self, sut):
+        """
+        Test case #2 
+        """
+        with patch('src.controllers.recipecontroller.get_readiness_of_recipes', autospec=True) as mockedreadiness, \
+                patch('src.controllers.recipecontroller.random.randint', autospec=True) as mockedrecipeindex:
+            mockedreadiness.return_value = None
+            mockedrecipeindex.return_value = 0
+        
+        result = sut.get_recipe('normal', False)
+        assert result == {'name': 'test', 'diet': 'normal', 'ingredients': ['test']}
+
+    @pytest.mark.unit
+    def test_get_recipe_3(self, sut):
+        """
+        Test case #3 
+        """
+        with patch('src.controllers.recipecontroller.get_readiness_of_recipes', autospec=True) as mockedreadiness, \
+                patch('src.controllers.recipecontroller.random.randint', autospec=True) as mockedrecipeindex:
+            mockedreadiness.return_value = None
+            mockedrecipeindex.return_value = 0
+        
+        result = sut.get_recipe('normal')
+        assert result == None
+
+    @pytest.mark.unit
+    def test_get_recipe_4(self, sut):
+        """
+        Test case #3 
+        """
+        with patch('src.controllers.recipecontroller.get_readiness_of_recipes', autospec=True) as mockedreadiness, \
+                patch('src.controllers.recipecontroller.random.randint', autospec=True) as mockedrecipeindex:
+            mockedreadiness.return_value = None
+            mockedrecipeindex.return_value = 0
+        
+        result = sut.get_recipe('rubber',True)
+        assert result == None
