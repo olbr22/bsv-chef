@@ -37,7 +37,7 @@ class RecipeController(Controller):
           available_items: dict -- a dictionary mapping pantry item names to their quantity (only including pantry items which have a quantity of minimum_quantity or higher)
           None -- in case the self.get_all() method throws an exception"""
 
-        items = self.get_all()
+        items = self.get_all() # array of objects
 
         available_items = {}
         for item in items:
